@@ -41,6 +41,18 @@ import re
 from tensorflow.python.platform import gfile
 from six import iteritems
 
+
+__all__ = ['triplet_loss', 'decov_loss', 'center_loss', 'get_image_paths_and_labels', 
+           'shuffle_examples', 'read_images_from_disk', 'random_rotate_image', 
+           'read_and_augment_data', '_add_loss_summaries', 'train', 'prewhiten', 
+           'crop', 'flip', 'to_rgb', 'load_data', 'get_label_batch', 'get_batch', 
+           'get_triplet_batch', 'get_learning_rate_from_file', 'ImageClass', 
+           'get_dataset', 'get_image_paths', 'split_dataset', 'load_model', 
+           'get_model_filenames', 'calculate_roc', 'calculate_accuracy', 
+           'calculate_val', 'calculate_val_far', 'store_revision_info', 
+           'list_variables', 'put_images_on_grid', 'write_arguments_to_file'] 
+
+
 def triplet_loss(anchor, positive, negative, alpha):
     """Calculate the triplet loss according to the FaceNet paper
     
@@ -118,6 +130,7 @@ def random_rotate_image(image):
     angle = np.random.uniform(low=-10.0, high=10.0)
     return misc.imrotate(image, angle, 'bicubic')
   
+
 def read_and_augment_data(image_list, label_list, image_size, batch_size, max_nrof_epochs, 
         random_crop, random_flip, random_rotate, nrof_preprocess_threads, shuffle=True):
     
